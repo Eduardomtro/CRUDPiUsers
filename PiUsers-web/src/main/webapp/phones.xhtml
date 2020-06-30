@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   template="/WEB-INF/templates/templatePhones.xhtml">
+   
+   
+   <ui:define name="contentLeft">
+   	   <p>
+   	   	 <h:panelGrid columns="2">
+   	   	 	<h:button value="Logout" outcome="index" />
+          </h:panelGrid>
+       </p>
+      <h2>Phones list of user logged</h2>
+      <h:panelGroup rendered="#{empty phones}">
+         <em>No registered phones.</em>
+      </h:panelGroup>
+      <h:dataTable var="_phone" value="#{phones}" rendered="#{not empty phones}" styleClass="uniquetablestyle">
+         <h:column>
+            <f:facet name="header">Ddd</f:facet>
+                #{_phone.ddd}
+            </h:column>
+         <h:column>
+            <f:facet name="header">Number</f:facet>
+                #{_phone.number}
+            </h:column>
+         <h:column>
+            <f:facet name="header">Type</f:facet>
+                #{_phone.type}
+            </h:column>
+       </h:dataTable>
+   </ui:define>
+</ui:composition>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   template="/WEB-INF/templates/default.xhtml">
+   
+   
+   <ui:define name="contentLeft">
+   	  <h1>Users registration</h1>
+      <h:form id="reg">
+         <h2>Member Registration</h2>
+         <h:panelGrid columns="3" columnClasses="titleCell">
+            <h:outputLabel for="name" value="Name:"/>
+            <h:inputText id="name" value="#{indexController.member.name}" />
+            <h:message for="name" errorClass="invalid"/>
+
+            <h:outputLabel for="email" value="Email:"/>
+            <h:inputText id="email" value="#{indexController.member.email}"/>
+            <h:message for="email" errorClass="invalid"/>
+            
+            <h:outputLabel for="password" value="Password:"/>
+            <h:inputSecret id="password" value="#{indexController.member.password}"/>
+            <h:message for="password" errorClass="invalid"/>
+         </h:panelGrid>
+         <p>
+            <h:panelGrid columns="2">
+               <h:commandButton id="register" action="#{indexController.register}" value="Register" styleClass="register"/>
+               <h:message for ="register" styleClass="messages" errorClass="invalid" infoClass="valid" warnClass="warning"/>
+            </h:panelGrid>
+         </p>
+      </h:form>
+      <h:form id = "cell">
+      	<h2> Telephone register</h2>
+      	<h:panelGrid columns="3" columnClasses="titleCell">
+      		<h:outputLabel for="ddd" value="Ddd:"/>
+            <h:inputText id="ddd" value="#{indexController.ddd}"/>
+            <h:message for="ddd" errorClass="invalid"/>
+            
+            <h:outputLabel for="number" value="Number:"/>
+            <h:inputText id="number" value="#{indexController.number}"/>
+            <h:message for="Number" errorClass="invalid"/>
+            
+            <h:outputLabel for="selectOne" value="Type" />
+    		<h:selectOneMenu id="selectOne" value = "#{indexController.type}">
+        		<f:selectItem itemLabel="Cellphone" itemValue="Cellphone" />
+        		<f:selectItem itemLabel="Residential" itemValue="Residential" />
+        		<f:selectItem itemLabel="Comercial" itemValue="Comercial" />
+    		</h:selectOneMenu>
+      	</h:panelGrid>
+      	<p>
+            <h:panelGrid columns="2">
+               <h:commandButton id="newNumber" action="#{indexController.newNumber}" value="Add Number" styleClass="register"/>
+               <h:message for="newNumber" styleClass="messages" errorClass="invalid" infoClass="valid" warnClass="warning"/>
+            </h:panelGrid>
+         </p>
+      </h:form>
+      <h:form id="update">
+         <h2>Update User</h2>
+         <h:panelGrid columns="3" columnClasses="titleCell">
+            <h:outputLabel for="name" value="Name:"/>
+            <h:inputText id="name" value="#{indexController.member.name}" />
+            <h:message for="name" errorClass="invalid"/>
+            
+            <h:outputLabel for="newName" value="New Name:"/>
+            <h:inputText id="newName" value="#{indexController.updateUser.newName}" />
+            <h:message for="newName" errorClass="invalid"/>
+
+            <h:outputLabel for="email" value="Email:"/>
+            <h:inputText id="email" value="#{indexController.member.email}"/>
+            <h:message for="email" errorClass="invalid"/>
+            
+            <h:outputLabel for="newEmail" value="New Email:"/>
+            <h:inputText id="newEmail" value="#{indexController.updateUser.newEmail}"/>
+            <h:message for="newEmail" errorClass="invalid"/>
+            
+            <h:outputLabel for="password" value="Password:"/>
+            <h:inputSecret id="password" value="#{indexController.member.password}"/>
+            <h:message for="password" errorClass="invalid"/>
+            
+            <h:outputLabel for="newPassword" value="New Password:"/>
+            <h:inputSecret id="newPassword" value="#{indexController.updateUser.newPassword}"/>
+            <h:message for="newPassword" errorClass="invalid"/>
+         </h:panelGrid>
+         <p>
+            <h:panelGrid columns="2">
+               <h:commandButton id="updateUser" action="#{indexController.update}" value="Update" styleClass="register"/>
+               <h:message for="updateUser" styleClass="messages" errorClass="invalid" infoClass="valid" warnClass="warning"/>
+            </h:panelGrid>
+         </p>
+      </h:form>
+      <h:form id="delete">
+         <h2>Delete User</h2>
+         <h:panelGrid columns="3" columnClasses="titleCell">
+            <h:outputLabel for="name" value="Name:"/>
+            <h:inputText id="name" value="#{indexController.member.name}" />
+            <h:message for="name" errorClass="invalid"/>
+         </h:panelGrid>
+         <p>
+            <h:panelGrid columns="2">
+               <h:commandButton id="deleteUser" action="#{indexController.deleteUser}" value="Delete" styleClass="register"/>
+               <h:message for="deleteUser" styleClass="messages" errorClass="invalid" infoClass="valid" warnClass="warning"/>
+            </h:panelGrid>
+         </p>
+      </h:form>
+      <h2>Members</h2>
+      <h:panelGroup rendered="#{empty members}">
+         <em>No registered members.</em>
+      </h:panelGroup>
+      <h:dataTable var="_member" value="#{members}" rendered="#{not empty members}" styleClass="simpletablestyle">
+         <h:column>
+            <f:facet name="header">Name</f:facet>
+                #{_member.name}
+            </h:column>
+         <h:column>
+            <f:facet name="header">Email</f:facet>
+                #{_member.email}
+            </h:column>
+      </h:dataTable>
+   </ui:define>
+   <ui:define name="contentRight">
+   		<h1>Login user</h1>
+   		<h:form>
+         <h2>Login</h2>
+         <h:panelGrid columns="3" columnClasses="titleCell">
+            <h:outputLabel for="name" value="Name:"/>
+            <h:inputText id="name" value="#{indexController.member.name}" />
+            <h:message for="name" errorClass="invalid"/>
+            
+            <h:outputLabel for="password" value="Password:"/>
+            <h:inputSecret id="password" value="#{indexController.member.password}"/>
+            <h:message for="password" errorClass="invalid"/>
+         </h:panelGrid>
+         <p>
+            <h:panelGrid columns="2">
+               <h:commandButton id="login" action="#{indexController.login}" value="Login" styleClass="register"/>
+               <h:message for="login" styleClass="messages" errorClass="invalid" infoClass="valid" warnClass="warning"/>
+            </h:panelGrid>
+         </p>
+      </h:form>
+   </ui:define>
+</ui:composition>

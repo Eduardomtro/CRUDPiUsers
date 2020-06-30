@@ -1,0 +1,4 @@
+br\com\pitanguser\PiUsers\util\WebResources.class
+br\com\pitanguser\PiUsers\rest\JaxRsActivator.class
+br\com\pitanguser\PiUsers\rest\MemberResourceRESTService.class
+br\com\pitanguser\PiUsers\controller\MemberController.class

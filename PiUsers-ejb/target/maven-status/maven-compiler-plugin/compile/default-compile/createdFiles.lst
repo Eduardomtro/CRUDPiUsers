@@ -1,0 +1,5 @@
+br\com\pitanguser\PiUsers\model\Member.class
+br\com\pitanguser\PiUsers\util\Resources.class
+br\com\pitanguser\PiUsers\service\MemberRegistration.class
+br\com\pitanguser\PiUsers\data\MemberRepository.class
+br\com\pitanguser\PiUsers\data\MemberListProducer.class
